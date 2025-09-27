@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import HeaderWrapper from './components/HeaderWrapper';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,10 +25,26 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased text-gray-800`}
+        style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)' }}
       >
-        <HeaderWrapper />
-        {children}
+        <div className="flex flex-col h-screen">
+          {/* <TopHeader /> */}
+          <div className="flex flex-1">
+            {/* <Sidebar /> */}
+            <main className="flex-1 overflow-y-auto p-6" style={{ backgroundColor: 'var(--background)' }}>
+              {children}
+            </main>
+          </div>
+        </div>
+        {/* Global Loading Spinner Placeholder */}
+        <div id="global-loading-spinner" style={{ display: 'none', position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 9999, padding: '20px', backgroundColor: 'rgba(0,0,0,0.7)', color: 'white', borderRadius: '5px' }}>
+          Yükleniyor...
+        </div>
+        {/* Global Toast Notification Placeholder */}
+        <div id="global-toast-notification" style={{ display: 'none', position: 'fixed', top: '20px', right: '20px', zIndex: 9999, padding: '10px 20px', backgroundColor: 'green', color: 'white', borderRadius: '5px' }}>
+          Başarılı!
+        </div>
       </body>
     </html>
   );
