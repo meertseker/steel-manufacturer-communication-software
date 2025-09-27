@@ -1,114 +1,114 @@
 # My Next.js Project
 
-## Açıklama
+## Description
 
-Bu proje, Next.js framework'ü kullanılarak geliştirilmiş bir web uygulamasıdır. İçerisinde çeşitli Next.js özellikleri ve uygulamalar barındırmaktadır. Proje, Docker konteynerleri aracılığıyla bir PostgreSQL veritabanı ile entegre edilmiştir.
+This project is a web application developed using the Next.js framework. It includes various Next.js features and applications. The project is integrated with a PostgreSQL database via Docker containers.
 
-## Özellikler
+## Features
 
 - Next.js 15.x
 - React 19.x
-- Tailwind CSS (muhtemelen)
-- PostgreSQL veritabanı
-- Docker ve Docker Compose ile kolay dağıtım
-- Prisma ORM ile veritabanı yönetimi
+- Tailwind CSS (likely)
+- PostgreSQL database
+- Easy deployment with Docker and Docker Compose
+- Database management with Prisma ORM
 
-## Kurulum
+## Setup
 
-Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
+Follow these steps to run the project on your local machine:
 
-### Gereksinimler
+### Prerequisites
 
-- Node.js (v20 veya üzeri)
-- npm (Node.js ile birlikte gelir)
-- Docker Desktop (Docker Engine ve Docker Compose için)
+- Node.js (v20 or higher)
+- npm (comes with Node.js)
+- Docker Desktop (for Docker Engine and Docker Compose)
 
-### Adımlar
+### Steps
 
-1.  Projeyi klonlayın:
+1.  Clone the repository:
     ```bash
     git clone <repository-url>
     cd my-project
     ```
 
-2.  Bağımlılıkları yükleyin:
+2.  Install dependencies:
     ```bash
     npm install
     ```
 
-3.  `.env` dosyasını oluşturun:
-    `my-project` dizininin kökünde `.env` adında bir dosya oluşturun ve aşağıdaki içeriği ekleyin:
+3.  Create the `.env` file:
+    Create a file named `.env` in the root of the `my-project` directory and add the following content:
     ```
     DATABASE_URL="postgres://admin:admin@localhost:5432/fabrika"
     ```
 
-4.  Prisma Client'ı oluşturun ve veritabanı migrasyonlarını uygulayın:
+4.  Generate Prisma Client and apply database migrations:
     ```bash
     npx prisma generate
     npx prisma migrate dev --name init
     ```
-    _Not: Eğer `Can't reach database server` gibi bir hata alırsanız, Docker Desktop'ın çalıştığından emin olun ve `Docker ile Çalıştırma` bölümündeki komutları tekrar deneyin._
+    _Note: If you encounter an error like `Can't reach database server`, ensure Docker Desktop is running and try the commands in the `Running with Docker` section again._
 
-## Kullanım
+## Usage
 
-Projeyi geliştirme modunda çalıştırmak için:
+To run the project in development mode:
 
 ```bash
 npm run dev
 ```
 
-Uygulama `http://localhost:3001` adresinde çalışacaktır.
+The application will be available at `http://localhost:3001`.
 
-Üretim için build almak isterseniz:
+To build for production:
 
 ```bash
 npm run build
 npm start
 ```
 
-## Docker ile Çalıştırma
+## Running with Docker
 
-Projeyi Docker konteynerleri aracılığıyla çalıştırmak için:
+To run the project via Docker containers:
 
-1.  `my-project` dizinine gidin.
+1.  Navigate to the `my-project` directory.
 
-2.  Docker Compose kullanarak servisleri başlatın (veritabanı dahil):
+2.  Start the services using Docker Compose (including the database):
     ```bash
     docker-compose up -d --build
     ```
-    Uygulamanız `http://localhost:3001` adresinde, PostgreSQL veritabanınız ise `localhost:5432` adresinde çalışacaktır.
-    Veri, `db_data` volume'u sayesinde korunacaktır.
+    Your application will be available at `http://localhost:3001`, and your PostgreSQL database at `localhost:5432`.
+    Data will be persisted thanks to the `db_data` volume.
 
-3.  Çalışan konteynerleri görmek için:
+3.  To see running containers:
     ```bash
     docker ps
     ```
 
-4.  Konteynerleri durdurmak ve kaldırmak için:
+4.  To stop and remove containers:
     ```bash
     docker-compose down
     ```
 
-## Veritabanı (Prisma)
+## Database (Prisma)
 
-Bu proje, veritabanı işlemleri için [Prisma ORM](https://www.prisma.io/) kullanmaktadır. Veritabanı şeması `prisma/schema.prisma` dosyasında tanımlanmıştır.
+This project uses [Prisma ORM](https://www.prisma.io/) for database operations. The database schema is defined in the `prisma/schema.prisma` file.
 
-### Yeni Model Ekleme veya Şema Değişikliği
+### Adding New Models or Schema Changes
 
-Yeni bir model eklediğinizde veya mevcut şemayı değiştirdiğinizde, aşağıdaki komutu çalıştırarak migrasyonu oluşturun ve uygulayın:
+When you add a new model or modify the existing schema, run the following command to create and apply the migration:
 
 ```bash
-npx prisma migrate dev --name <migration-adı>
+npx prisma migrate dev --name <migration-name>
 ```
 
-## Geliştirme
+## Development
 
-Bu proje Next.js, React ve TypeScript ile geliştirilmiştir. Tailwind CSS kullanılarak stilize edilmiştir. Proje yapısı, Next.js'in App Router prensiplerine uygun olarak düzenlenmiştir.
+This project is developed with Next.js, React, and TypeScript. It is styled using Tailwind CSS. The project structure is organized according to Next.js's App Router principles.
 
-## Katkıda Bulunma
+## Contributing
 
-Katkıda bulunmak isterseniz, lütfen bir fork oluşturun, değişikliklerinizi yapın ve bir pull request gönderin.
+If you would like to contribute, please fork the repository, make your changes, and submit a pull request.
 
-## Lisans
+## License
 
-Bu proje MIT Lisansı altında lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasına bakın (eğer varsa).
+This project is licensed under the MIT License. See the `LICENSE` file (if applicable) for more details.
